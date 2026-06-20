@@ -1599,3 +1599,385 @@ body.is-signup .auth-card__copy {
 		position: static;
 	}
 }
+
+/* ===== Kredit — Peer-to-peer micro lending ===== */
+.kredit-link.is-active {
+	background: #C4956A !important;
+	color: #fff !important;
+	box-shadow: 0 12px 22px rgba(196, 149, 106, 0.3) !important;
+}
+
+.page__links .kredit-link:not(.is-active) {
+	color: #C4956A;
+	font-weight: 700;
+}
+
+.kredit-eyebrow {
+	color: #C4956A !important;
+}
+
+.kredit-toggle-section {
+	display: flex;
+	justify-content: center;
+}
+
+.kredit-toggle {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+	padding: 6px;
+	border-radius: 999px;
+	background: rgba(196, 149, 106, 0.1);
+	width: min(100%, 320px);
+}
+
+.kredit-toggle__button {
+	min-height: 50px;
+	border-radius: 999px;
+	font-weight: 600;
+	font-size: 1rem;
+	color: var(--muted);
+	transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.kredit-toggle__button.is-active {
+	background: #C4956A;
+	color: #fff;
+	box-shadow: 0 10px 22px rgba(196, 149, 106, 0.3);
+}
+
+.kredit-toggle__button:hover {
+	transform: translateY(-2px);
+}
+
+/* Panels */
+.kredit-panel {
+	display: none;
+}
+
+.kredit-panel.is-active {
+	display: block;
+}
+
+/* Loan request cards grid */
+.kredit-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 22px;
+}
+
+.kredit-card {
+	padding: 26px;
+	border-radius: var(--radius-lg);
+	background: rgba(255, 255, 255, 0.92);
+	border: 1px solid rgba(46, 46, 46, 0.05);
+	box-shadow: 0 14px 32px rgba(46, 46, 46, 0.06);
+	display: grid;
+	gap: 16px;
+	transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.kredit-card:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-hover);
+}
+
+.kredit-card__top {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+.kredit-card__avatar {
+	width: 48px;
+	height: 48px;
+	border-radius: 999px;
+	display: grid;
+	place-items: center;
+	background: linear-gradient(135deg, #C4956A, #d4a97e);
+	color: #fff;
+	font-weight: 700;
+	font-size: 0.95rem;
+	box-shadow: 0 8px 18px rgba(196, 149, 106, 0.3);
+	flex-shrink: 0;
+}
+
+.kredit-card__info {
+	display: grid;
+	gap: 2px;
+}
+
+.kredit-card__name {
+	margin: 0;
+	font-size: 1.05rem;
+	font-weight: 600;
+}
+
+.kredit-card__purpose {
+	font-size: 0.84rem;
+	color: var(--muted);
+	font-weight: 500;
+}
+
+.kredit-card__desc {
+	margin: 0;
+	color: var(--muted);
+	line-height: 1.7;
+	font-size: 0.94rem;
+}
+
+.kredit-card__meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.kredit-card__amount-wrap {
+	display: grid;
+	gap: 2px;
+}
+
+.kredit-card__amount {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #C4956A;
+	letter-spacing: -0.02em;
+}
+
+.kredit-card__timeline {
+	font-size: 0.82rem;
+	color: var(--muted);
+}
+
+/* Risk badge */
+.kredit-risk-badge {
+	padding: 6px 14px;
+	border-radius: 999px;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.kredit-risk--low {
+	background: rgba(124, 158, 138, 0.16);
+	color: #4a7a5c;
+}
+
+.kredit-risk--medium {
+	background: rgba(219, 180, 72, 0.18);
+	color: #8a6d1a;
+}
+
+.kredit-risk--high {
+	background: rgba(212, 120, 120, 0.18);
+	color: #8a2e2e;
+}
+
+/* Lend button */
+.kredit-lend-button {
+	background: #C4956A;
+	box-shadow: 0 14px 26px rgba(196, 149, 106, 0.28);
+}
+
+.kredit-lend-button:hover {
+	transform: translateY(-2px);
+	background: #b8865c;
+}
+
+.kredit-lend-button--done {
+	background: rgba(124, 158, 138, 0.18) !important;
+	color: var(--accent) !important;
+	box-shadow: none !important;
+	cursor: default;
+}
+
+/* Submit button in borrow form */
+.kredit-submit-button {
+	background: #C4956A;
+	box-shadow: 0 14px 26px rgba(196, 149, 106, 0.28);
+}
+
+.kredit-submit-button:hover {
+	transform: translateY(-2px);
+	background: #b8865c;
+}
+
+/* Borrow form card */
+.kredit-form-card {
+	max-width: 560px;
+}
+
+/* Confirmation card */
+.kredit-confirm {
+	text-align: center;
+	padding: 36px 28px;
+	display: grid;
+	gap: 12px;
+	justify-items: center;
+}
+
+.kredit-confirm__icon {
+	width: 64px;
+	height: 64px;
+	border-radius: 999px;
+	display: grid;
+	place-items: center;
+	font-size: 1.8rem;
+	background: rgba(124, 158, 138, 0.16);
+	color: var(--accent);
+	box-shadow: 0 12px 24px rgba(124, 158, 138, 0.2);
+}
+
+.kredit-confirm h3 {
+	margin: 0;
+	font-size: 1.4rem;
+}
+
+.kredit-confirm p {
+	margin: 0;
+	color: var(--muted);
+	line-height: 1.7;
+	max-width: 40ch;
+}
+
+/* My Kredit section */
+.kredit-my-section {
+	display: grid;
+	gap: 22px;
+}
+
+.kredit-stats-row {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.kredit-stat-card {
+	padding: 22px;
+	border-radius: var(--radius-md);
+	background: rgba(255, 255, 255, 0.92);
+	border: 1px solid rgba(46, 46, 46, 0.05);
+	box-shadow: 0 12px 26px rgba(46, 46, 46, 0.06);
+	display: grid;
+	gap: 8px;
+}
+
+.kredit-stat-card span {
+	font-size: 0.82rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.kredit-stat-card strong {
+	font-size: 1.7rem;
+	letter-spacing: -0.02em;
+	color: var(--text);
+}
+
+/* Active loans list */
+.kredit-active-loans {
+	display: grid;
+	gap: 16px;
+}
+
+.kredit-loan-item {
+	padding: 22px 26px;
+	border-radius: var(--radius-md);
+	background: linear-gradient(135deg, rgba(250, 250, 247, 0.96), rgba(255, 255, 255, 0.98));
+	border: 1px solid rgba(46, 46, 46, 0.05);
+	box-shadow: 0 12px 24px rgba(46, 46, 46, 0.05);
+	display: grid;
+	gap: 12px;
+}
+
+.kredit-loan-item__top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.kredit-loan-item__name {
+	font-weight: 600;
+	font-size: 1.02rem;
+}
+
+.kredit-loan-item__amount {
+	font-weight: 700;
+	font-size: 1.1rem;
+	color: #C4956A;
+}
+
+.kredit-loan-item__purpose {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.92rem;
+	line-height: 1.6;
+}
+
+.kredit-loan-item__progress {
+	display: grid;
+	gap: 8px;
+}
+
+.kredit-progress-bar {
+	height: 10px;
+	border-radius: 999px;
+	background: rgba(196, 149, 106, 0.14);
+	overflow: hidden;
+}
+
+.kredit-progress-bar span {
+	display: block;
+	height: 100%;
+	border-radius: inherit;
+	background: linear-gradient(90deg, #C4956A, #d4a97e);
+	transition: width 400ms ease;
+}
+
+.kredit-loan-item__status {
+	font-size: 0.84rem;
+	color: var(--muted);
+	font-weight: 500;
+}
+
+.kredit-loan-item__status--done {
+	color: var(--accent);
+	font-weight: 600;
+}
+
+/* AI tip card kredit variant */
+.kredit-ai-tip {
+	background: linear-gradient(135deg, rgba(196, 149, 106, 0.14), rgba(219, 180, 130, 0.18));
+	border: 1px solid rgba(196, 149, 106, 0.22);
+	box-shadow: 0 18px 38px rgba(196, 149, 106, 0.14);
+}
+
+.kredit-ai-tip .ai-tip-card__label {
+	color: #C4956A;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+	.kredit-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.kredit-stats-row {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 560px) {
+	.kredit-stats-row {
+		grid-template-columns: 1fr;
+	}
+
+	.kredit-toggle {
+		width: 100%;
+	}
+}

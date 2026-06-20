@@ -5,6 +5,8 @@ const barChart = document.querySelector('[data-bar-chart]');
 const activityFeed = document.querySelector('[data-activity-feed]');
 const modeButtons = document.querySelectorAll('[data-mode-button]');
 const authForms = document.querySelectorAll('[data-form]');
+const welcomeName = document.querySelector('[data-welcome-name]');
+const profileInitials = document.querySelector('[data-profile-initials]');
 
 const earningsData = [
 	{ month: 'Jan', value: 36000 },
@@ -93,10 +95,67 @@ modeButtons.forEach((button) => {
 	});
 });
 
-function showPostLogin() {
+function toTitleCase(value) {
+	return value
+		.split(/\s+/)
+		.filter(Boolean)
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+		.join(' ');
+}
+
+function getInitials(name) {
+	const parts = name.split(/\s+/).filter(Boolean);
+	if (parts.length === 0) {
+		return '';
+	}
+	const initials = parts.length === 1
+		? parts[0].slice(0, 2)
+		: parts[0].charAt(0) + parts[parts.length - 1].charAt(0);
+	return initials.toUpperCase();
+}
+
+function resolveName(form) {
+	if (!form) {
+		return '';
+	}
+
+	const nameInput = form.querySelector('input[name="signupName"]');
+	if (nameInput && nameInput.value.trim()) {
+		return toTitleCase(nameInput.value.trim());
+	}
+
+	const emailInput = form.querySelector('input[type="email"]');
+	if (emailInput && emailInput.value.trim()) {
+		const localPart = emailInput.value.trim().split('@')[0].replace(/[._-]+/g, ' ');
+		return toTitleCase(localPart);
+	}
+
+	return '';
+}
+
+function applyUserName(name) {
+	if (!name) {
+		return;
+	}
+
+	if (welcomeName) {
+		welcomeName.textContent = name;
+	}
+
+	if (profileInitials) {
+		const initials = getInitials(name);
+		if (initials) {
+			profileInitials.textContent = initials;
+		}
+	}
+}
+
+function showPostLogin(form) {
 	if (!authShell || !dashboard) {
 		return;
 	}
+
+	applyUserName(resolveName(form));
 
 	authShell.hidden = false;
 	authShell.classList.add('is-post-login');
@@ -109,7 +168,7 @@ function showPostLogin() {
 authForms.forEach((form) => {
 	form.addEventListener('submit', (event) => {
 		event.preventDefault();
-		showPostLogin();
+		showPostLogin(form);
 	});
 });
 

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CreatorSetu | Kredit</title>
+	<meta name="description" content="Peer-to-peer micro lending for student creators on CreatorSetu.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="page">
+		<header class="page__nav">
+			<div class="page__brand">
+				<img class="brand-logo brand-logo--dashboard" src="logo_transparent.png" alt="CreatorSetu Logo">
+			</div>
+			<nav class="page__links" aria-label="Primary">
+				<a href="index.html">Dashboard</a>
+				<a href="earnings.html">Earnings</a>
+				<a href="budget.html">Budget</a>
+				<a href="strategy.html">Strategy</a>
+				<a href="community.html">Community</a>
+				<a href="kredit.html" class="is-active kredit-link" aria-current="page">Kredit</a>
+			</nav>
+		</header>
+
+		<section class="page__intro">
+			<p class="eyebrow kredit-eyebrow">Peer-to-peer micro lending</p>
+			<h1>Kredit</h1>
+			<p class="page__lead">Grow Together, Lend Together — empower fellow student creators with micro loans and build a community of trust.</p>
+		</section>
+
+		<section class="kredit-toggle-section">
+			<div class="kredit-toggle" role="tablist" aria-label="Kredit mode">
+				<button class="kredit-toggle__button is-active" type="button" data-kredit-mode="lend" aria-pressed="true">Lend</button>
+				<button class="kredit-toggle__button" type="button" data-kredit-mode="borrow" aria-pressed="false">Borrow</button>
+			</div>
+		</section>
+
+		<section class="kredit-panel kredit-panel--lend is-active" data-kredit-panel="lend" aria-label="Available loan requests">
+			<div class="panel-card__header">
+				<h2>Available Loan Requests</h2>
+				<p>Help a fellow creator grow — lend what you can.</p>
+			</div>
+			<div class="kredit-grid" data-loan-grid></div>
+		</section>
+
+		<section class="kredit-panel kredit-panel--borrow" data-kredit-panel="borrow" aria-label="Request a loan">
+			<div class="panel-card kredit-form-card">
+				<div class="panel-card__header">
+					<h2>Request a Micro Loan</h2>
+					<p>Tell the community what you need and why.</p>
+				</div>
+				<form class="stack-form" data-borrow-form novalidate>
+					<label class="field">
+						<span>Amount needed (₹)</span>
+						<input type="number" name="amount" placeholder="e.g. 2000" min="100" max="50000" step="100" required>
+					</label>
+					<label class="field">
+						<span>Purpose</span>
+						<select name="purpose" required>
+							<option value="">Select purpose</option>
+							<option>Equipment upgrade</option>
+							<option>Course / Workshop</option>
+							<option>Software subscription</option>
+							<option>Content production</option>
+							<option>Marketing / Ads</option>
+							<option>Emergency fund</option>
+							<option>Other</option>
+						</select>
+					</label>
+					<label class="field">
+						<span>Describe your need</span>
+						<input type="text" name="description" placeholder="Brief description of what you'll use it for" required>
+					</label>
+					<label class="field">
+						<span>Repayment timeline</span>
+						<select name="timeline" required>
+							<option value="">Select timeline</option>
+							<option>2 weeks</option>
+							<option>1 month</option>
+							<option>2 months</option>
+							<option>3 months</option>
+						</select>
+					</label>
+					<button class="primary-button kredit-submit-button" type="submit">Submit Request</button>
+				</form>
+			</div>
+		</section>
+
+		<section class="kredit-my-section" aria-label="My Kredit overview">
+			<div class="panel-card__header">
+				<h2>My Kredit</h2>
+				<p>Track your lending activity and repayments.</p>
+			</div>
+			<div class="kredit-stats-row">
+				<article class="kredit-stat-card">
+					<span>Total Lent</span>
+					<strong data-total-lent>₹4,500</strong>
+				</article>
+				<article class="kredit-stat-card">
+					<span>Active Loans</span>
+					<strong data-active-loans>3</strong>
+				</article>
+				<article class="kredit-stat-card">
+					<span>Repaid to You</span>
+					<strong data-repaid>₹2,000</strong>
+				</article>
+				<article class="kredit-stat-card">
+					<span>Trust Score</span>
+					<strong data-trust-score>92%</strong>
+				</article>
+			</div>
+			<div class="kredit-active-loans" data-active-loans-list>
+				<div class="kredit-loan-item">
+					<div class="kredit-loan-item__top">
+						<span class="kredit-loan-item__name">Priya M.</span>
+						<span class="kredit-loan-item__amount">₹1,500</span>
+					</div>
+					<p class="kredit-loan-item__purpose">Course subscription — UI design masterclass</p>
+					<div class="kredit-loan-item__progress">
+						<div class="kredit-progress-bar">
+							<span style="width: 66%"></span>
+						</div>
+						<span class="kredit-loan-item__status">66% repaid</span>
+					</div>
+				</div>
+				<div class="kredit-loan-item">
+					<div class="kredit-loan-item__top">
+						<span class="kredit-loan-item__name">Arjun K.</span>
+						<span class="kredit-loan-item__amount">₹2,000</span>
+					</div>
+					<p class="kredit-loan-item__purpose">Equipment upgrade — ring light + mic</p>
+					<div class="kredit-loan-item__progress">
+						<div class="kredit-progress-bar">
+							<span style="width: 30%"></span>
+						</div>
+						<span class="kredit-loan-item__status">30% repaid</span>
+					</div>
+				</div>
+				<div class="kredit-loan-item">
+					<div class="kredit-loan-item__top">
+						<span class="kredit-loan-item__name">Meera S.</span>
+						<span class="kredit-loan-item__amount">₹1,000</span>
+					</div>
+					<p class="kredit-loan-item__purpose">Marketing — Instagram ad campaign</p>
+					<div class="kredit-loan-item__progress">
+						<div class="kredit-progress-bar">
+							<span style="width: 100%"></span>
+						</div>
+						<span class="kredit-loan-item__status kredit-loan-item__status--done">Fully repaid ✓</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="tip-section">
+			<div class="ai-tip-card kredit-ai-tip">
+				<div class="ai-tip-card__icon">💡</div>
+				<div>
+					<p class="ai-tip-card__label">AI Kredit Insight</p>
+					<p class="ai-tip-card__text">Based on repayment history, <strong>Priya M.</strong> has a 94% trust score — great candidate for your next micro loan. Creators who lend to 3+ peers see 2x community engagement growth.</p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<script src="kredit.js"></script>
+</body>
+</html>

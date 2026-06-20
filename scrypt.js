@@ -24,11 +24,79 @@ const activityItems = [
 	{ badge: 'Impact', time: '3d ago', title: 'Donation allocated', text: 'A portion of this week\'s revenue was set aside for impact work.' }
 ];
 
-const rupeeFormatter = new Intl.NumberFormat('en-IN', {
-	style: 'currency',
-	currency: 'INR',
-	maximumFractionDigits: 0
-});
+function shortRupee(value) {
+	if (value >= 1000) {
+		const thousands = value / 1000;
+		const rounded = Number.isInteger(thousands) ? thousands : Math.round(thousands * 10) / 10;
+		return `₹${rounded}K`;
+	}
+	return `₹${value}`;
+}
+
+function buildEarningsChart(data) {
+	const width = 620;
+	const height = 320;
+	const margin = { top: 34, right: 24, bottom: 44, left: 56 };
+	const plotWidth = width - margin.left - margin.right;
+	const plotHeight = height - margin.top - margin.bottom;
+
+	const maxValue = Math.max(...data.map((item) => item.value));
+	const tickCount = 4;
+	const step = Math.ceil(maxValue / tickCount / 10000) * 10000;
+	const maxY = step * tickCount;
+	const slotWidth = plotWidth / data.length;
+	const barWidth = slotWidth * 0.46;
+	const yFor = (value) => margin.top + plotHeight - (value / maxY) * plotHeight;
+	const xCenter = (index) => margin.left + slotWidth * (index + 0.5);
+
+	const gridLines = [];
+	const axisLabels = [];
+	for (let tick = 0; tick <= tickCount; tick += 1) {
+		const value = step * tick;
+		const y = yFor(value);
+		gridLines.push(
+			`<line x1="${margin.left}" y1="${y}" x2="${width - margin.right}" y2="${y}" class="earnings-chart__grid" />`
+		);
+		axisLabels.push(
+			`<text x="${margin.left - 12}" y="${y + 4}" class="earnings-chart__axis">${shortRupee(value)}</text>`
+		);
+	}
+
+	const bars = data
+		.map((item, index) => {
+			const x = xCenter(index) - barWidth / 2;
+			const y = yFor(item.value);
+			const barHeight = margin.top + plotHeight - y;
+			return `<rect x="${x}" y="${y}" width="${barWidth}" height="${barHeight}" rx="10" class="earnings-chart__bar" />`;
+		})
+		.join('');
+
+	const linePoints = data.map((item, index) => `${xCenter(index)},${yFor(item.value)}`).join(' ');
+	const areaPoints = `${margin.left},${margin.top + plotHeight} ${linePoints} ${width - margin.right},${margin.top + plotHeight}`;
+
+	const markers = data
+		.map((item, index) => {
+			const cx = xCenter(index);
+			const cy = yFor(item.value);
+			return `
+				<circle cx="${cx}" cy="${cy}" r="5" class="earnings-chart__dot" />
+				<text x="${cx}" y="${cy - 14}" class="earnings-chart__value">${shortRupee(item.value)}</text>
+				<text x="${cx}" y="${height - margin.bottom + 24}" class="earnings-chart__label">${item.month}</text>
+			`;
+		})
+		.join('');
+
+	return `
+		<svg class="earnings-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="Monthly earnings chart" preserveAspectRatio="xMidYMid meet">
+			${gridLines.join('')}
+			${axisLabels.join('')}
+			<polygon points="${areaPoints}" class="earnings-chart__area" />
+			${bars}
+			<polyline points="${linePoints}" class="earnings-chart__line" />
+			${markers}
+		</svg>
+	`;
+}
 
 function setMode(mode) {
 	if (!authShell || !authCard) {
@@ -61,17 +129,7 @@ function renderDashboard() {
 		return;
 	}
 
-	barChart.innerHTML = earningsData
-		.map(
-			(item) => `
-				<div class="bar-chart__item">
-					<div class="bar-chart__bar" style="height: ${Math.max(40, (item.value / 76000) * 100)}%" aria-hidden="true"></div>
-					<div class="bar-chart__value">${rupeeFormatter.format(item.value)}</div>
-					<div class="bar-chart__label">${item.month}</div>
-				</div>
-			`
-		)
-		.join('');
+	barChart.innerHTML = buildEarningsChart(earningsData);
 
 	activityFeed.innerHTML = activityItems
 		.map(

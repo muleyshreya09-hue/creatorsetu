@@ -22,7 +22,7 @@
 				<a href="budget.html">Budget</a>
 				<a href="strategy.html" class="is-active" aria-current="page">Strategy</a>
 				<a href="community.html">Community</a>
-					<a href="kredit.html" class="kredit-nav-link"><span class="kredit-icon">₹</span> Kredit</a>
+				<a href="kredit.html" class="kredit-nav-link"><span class="kredit-icon">₹</span> Kredit</a>
 			</nav>
 		</header>
 
@@ -60,10 +60,22 @@
 							<option>Live streams</option>
 						</select>
 					</label>
-					<label class="field">
+					<div class="field posts-per-week-field">
 						<span>Posts per week: <strong data-posts-value>4</strong></span>
-						<input type="range" name="postsPerWeek" min="1" max="14" value="4" data-strategy-input data-posts-range class="range-input">
-					</label>
+						<div class="week-dots" data-week-dots aria-label="Posts per week visualizer">
+							<div class="week-dots__row">
+								<button type="button" class="week-dot is-filled" data-day="1" aria-label="Monday"><span class="week-dot__label">M</span></button>
+								<button type="button" class="week-dot is-filled" data-day="2" aria-label="Tuesday"><span class="week-dot__label">T</span></button>
+								<button type="button" class="week-dot is-filled" data-day="3" aria-label="Wednesday"><span class="week-dot__label">W</span></button>
+								<button type="button" class="week-dot is-filled" data-day="4" aria-label="Thursday"><span class="week-dot__label">T</span></button>
+								<button type="button" class="week-dot" data-day="5" aria-label="Friday"><span class="week-dot__label">F</span></button>
+								<button type="button" class="week-dot" data-day="6" aria-label="Saturday"><span class="week-dot__label">S</span></button>
+								<button type="button" class="week-dot" data-day="7" aria-label="Sunday"><span class="week-dot__label">S</span></button>
+							</div>
+							<p class="week-dots__hint">Click days to toggle • <span data-posts-pace>Steady pace</span></p>
+						</div>
+						<input type="hidden" name="postsPerWeek" value="4" data-strategy-input data-posts-range>
+					</div>
 					<button class="primary-button" type="submit">Generate ideas</button>
 				</form>
 			</div>
@@ -84,6 +96,21 @@
 			</div>
 			<div class="best-content" data-best-content></div>
 		</section>
+
+		<footer class="site-footer">
+			<div class="site-footer__brand">
+				<img src="logo_transparent.png" alt="CreatorSetu" class="brand-logo">
+			</div>
+			<p class="site-footer__text">Built for student creators who dream big and start small.</p>
+			<div class="site-footer__links">
+				<a href="index.html">Dashboard</a>
+				<a href="earnings.html">Earnings</a>
+				<a href="budget.html">Budget</a>
+				<a href="strategy.html">Strategy</a>
+				<a href="community.html">Community</a>
+				<a href="kredit.html">Kredit</a>
+			</div>
+		</footer>
 	</main>
 
 	<script src="strategy.js"></script>

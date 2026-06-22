@@ -5,6 +5,8 @@ const postsValueEl = document.querySelector('[data-posts-value]');
 const suggestionGrid = document.querySelector('[data-suggestion-grid]');
 const advisorContext = document.querySelector('[data-advisor-context]');
 const bestContentEl = document.querySelector('[data-best-content]');
+const weekDotsContainer = document.querySelector('[data-week-dots]');
+const postsPaceEl = document.querySelector('[data-posts-pace]');
 
 const PLATFORM_TIPS = {
 	Instagram: [
@@ -116,10 +118,31 @@ strategyInputs.forEach((input) => {
 	input.addEventListener('change', renderSuggestions);
 });
 
-if (postsRange && postsValueEl) {
-	postsRange.addEventListener('input', () => {
-		postsValueEl.textContent = postsRange.value;
+function getPaceLabel(count) {
+	if (count <= 2) return 'Light & easy';
+	if (count <= 4) return 'Steady pace';
+	if (count <= 6) return 'High output';
+	return 'Daily grind';
+}
+
+function syncWeekDots() {
+	const dots = weekDotsContainer.querySelectorAll('.week-dot');
+	const filledCount = weekDotsContainer.querySelectorAll('.week-dot.is-filled').length;
+	postsRange.value = filledCount;
+	postsValueEl.textContent = filledCount;
+	if (postsPaceEl) postsPaceEl.textContent = getPaceLabel(filledCount);
+	renderSuggestions();
+}
+
+if (weekDotsContainer) {
+	const dots = weekDotsContainer.querySelectorAll('.week-dot');
+	dots.forEach((dot) => {
+		dot.addEventListener('click', () => {
+			dot.classList.toggle('is-filled');
+			syncWeekDots();
+		});
 	});
+	syncWeekDots();
 }
 
 strategyForm.addEventListener('submit', (event) => {

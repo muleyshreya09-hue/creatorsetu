@@ -5,7 +5,6 @@ const postsValueEl = document.querySelector('[data-posts-value]');
 const suggestionGrid = document.querySelector('[data-suggestion-grid]');
 const advisorContext = document.querySelector('[data-advisor-context]');
 const bestContentEl = document.querySelector('[data-best-content]');
-const weekDotsContainer = document.querySelector('[data-week-dots]');
 const postsPaceEl = document.querySelector('[data-posts-pace]');
 
 const PLATFORM_TIPS = {
@@ -125,26 +124,17 @@ function getPaceLabel(count) {
 	return 'Daily grind';
 }
 
-function syncWeekDots() {
-	const filledCount = weekDotsContainer.querySelectorAll('.day-pill.is-filled').length;
-	postsRange.value = filledCount;
-	postsValueEl.textContent = filledCount;
-	if (postsPaceEl) postsPaceEl.textContent = getPaceLabel(filledCount);
-	const barFill = weekDotsContainer.querySelector('.week-planner__bar-fill');
-	if (barFill) barFill.style.width = Math.round((filledCount / 7) * 100) + '%';
+function syncSlider() {
+	const val = Number(postsRange.value);
+	postsValueEl.textContent = val;
+	if (postsPaceEl) postsPaceEl.textContent = getPaceLabel(val);
+	const pct = ((val - 1) / 6) * 100;
+	postsRange.style.setProperty('--fill', pct + '%');
 	renderSuggestions();
 }
 
-if (weekDotsContainer) {
-	const dots = weekDotsContainer.querySelectorAll('.day-pill');
-	dots.forEach((dot) => {
-		dot.addEventListener('click', () => {
-			dot.classList.toggle('is-filled');
-			syncWeekDots();
-		});
-	});
-	syncWeekDots();
-}
+postsRange.addEventListener('input', syncSlider);
+syncSlider();
 
 strategyForm.addEventListener('submit', (event) => {
 	event.preventDefault();

@@ -62,25 +62,22 @@
 					</label>
 					<div class="field posts-per-week-field">
 						<div class="ppw-header">
-							<span class="ppw-label">Posting schedule</span>
-							<span class="ppw-count"><strong data-posts-value>4</strong> days/week</span>
+							<span class="ppw-label">Posts per week</span>
+							<span class="ppw-count"><strong data-posts-value>4</strong></span>
 						</div>
-						<div class="week-planner" data-week-dots aria-label="Weekly posting schedule">
-							<div class="week-planner__grid">
-								<button type="button" class="day-pill is-filled" data-day="1" aria-label="Monday"><span class="day-pill__letter">M</span><span class="day-pill__name">Mon</span></button>
-								<button type="button" class="day-pill is-filled" data-day="2" aria-label="Tuesday"><span class="day-pill__letter">T</span><span class="day-pill__name">Tue</span></button>
-								<button type="button" class="day-pill is-filled" data-day="3" aria-label="Wednesday"><span class="day-pill__letter">W</span><span class="day-pill__name">Wed</span></button>
-								<button type="button" class="day-pill is-filled" data-day="4" aria-label="Thursday"><span class="day-pill__letter">T</span><span class="day-pill__name">Thu</span></button>
-								<button type="button" class="day-pill" data-day="5" aria-label="Friday"><span class="day-pill__letter">F</span><span class="day-pill__name">Fri</span></button>
-								<button type="button" class="day-pill" data-day="6" aria-label="Saturday"><span class="day-pill__letter">S</span><span class="day-pill__name">Sat</span></button>
-								<button type="button" class="day-pill" data-day="7" aria-label="Sunday"><span class="day-pill__letter">S</span><span class="day-pill__name">Sun</span></button>
-							</div>
-							<div class="week-planner__footer">
-								<span class="week-planner__pace" data-posts-pace>Steady pace</span>
-								<span class="week-planner__bar"><span class="week-planner__bar-fill" style="width: 57%"></span></span>
+						<div class="ppw-slider-wrap">
+							<input type="range" name="postsPerWeek" min="1" max="7" value="4" class="ppw-slider" data-strategy-input data-posts-range>
+							<div class="ppw-slider-labels">
+								<span>1</span>
+								<span>2</span>
+								<span>3</span>
+								<span>4</span>
+								<span>5</span>
+								<span>6</span>
+								<span>7</span>
 							</div>
 						</div>
-						<input type="hidden" name="postsPerWeek" value="4" data-strategy-input data-posts-range>
+						<span class="ppw-pace" data-posts-pace>Steady pace</span>
 					</div>
 					<button class="primary-button" type="submit">Generate ideas</button>
 				</form>

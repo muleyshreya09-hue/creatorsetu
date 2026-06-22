@@ -58,10 +58,10 @@ const seedBestContent = [
 ];
 
 function cadenceBucket(posts) {
-	if (posts <= 3) {
+	if (posts <= 2) {
 		return 'low';
 	}
-	if (posts <= 7) {
+	if (posts <= 5) {
 		return 'mid';
 	}
 	return 'high';
@@ -113,6 +113,7 @@ function renderBestContent() {
 }
 
 strategyInputs.forEach((input) => {
+	if (input === postsRange) return;
 	input.addEventListener('input', renderSuggestions);
 	input.addEventListener('change', renderSuggestions);
 });

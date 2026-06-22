@@ -126,16 +126,17 @@ function getPaceLabel(count) {
 }
 
 function syncWeekDots() {
-	const dots = weekDotsContainer.querySelectorAll('.week-dot');
-	const filledCount = weekDotsContainer.querySelectorAll('.week-dot.is-filled').length;
+	const filledCount = weekDotsContainer.querySelectorAll('.day-pill.is-filled').length;
 	postsRange.value = filledCount;
 	postsValueEl.textContent = filledCount;
 	if (postsPaceEl) postsPaceEl.textContent = getPaceLabel(filledCount);
+	const barFill = weekDotsContainer.querySelector('.week-planner__bar-fill');
+	if (barFill) barFill.style.width = Math.round((filledCount / 7) * 100) + '%';
 	renderSuggestions();
 }
 
 if (weekDotsContainer) {
-	const dots = weekDotsContainer.querySelectorAll('.week-dot');
+	const dots = weekDotsContainer.querySelectorAll('.day-pill');
 	dots.forEach((dot) => {
 		dot.addEventListener('click', () => {
 			dot.classList.toggle('is-filled');

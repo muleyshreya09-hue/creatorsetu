@@ -22,6 +22,7 @@
 				<a href="budget.html">Budget</a>
 				<a href="strategy.html" class="is-active" aria-current="page">Strategy</a>
 				<a href="community.html">Community</a>
+				<a href="kredit.html" class="kredit-nav-link"><span class="kredit-icon">₹</span> Kredit</a>
 			</nav>
 		</header>
 
@@ -59,10 +60,25 @@
 							<option>Live streams</option>
 						</select>
 					</label>
-					<label class="field">
-						<span>Posts per week: <strong data-posts-value>4</strong></span>
-						<input type="range" name="postsPerWeek" min="1" max="14" value="4" data-strategy-input data-posts-range class="range-input">
-					</label>
+					<div class="field posts-per-week-field">
+						<div class="ppw-header">
+							<span class="ppw-label">Posts per week</span>
+							<span class="ppw-count"><strong data-posts-value>4</strong></span>
+						</div>
+						<div class="ppw-slider-wrap">
+							<input type="range" name="postsPerWeek" min="1" max="7" value="4" class="ppw-slider" data-strategy-input data-posts-range>
+							<div class="ppw-slider-labels">
+								<span>1</span>
+								<span>2</span>
+								<span>3</span>
+								<span>4</span>
+								<span>5</span>
+								<span>6</span>
+								<span>7</span>
+							</div>
+						</div>
+						<span class="ppw-pace" data-posts-pace>Steady pace</span>
+					</div>
 					<button class="primary-button" type="submit">Generate ideas</button>
 				</form>
 			</div>
@@ -83,6 +99,21 @@
 			</div>
 			<div class="best-content" data-best-content></div>
 		</section>
+
+		<footer class="site-footer">
+			<div class="site-footer__brand">
+				<img src="logo_transparent.png" alt="CreatorSetu" class="brand-logo">
+			</div>
+			<p class="site-footer__text">Built for student creators who dream big and start small.</p>
+			<div class="site-footer__links">
+				<a href="index.html">Dashboard</a>
+				<a href="earnings.html">Earnings</a>
+				<a href="budget.html">Budget</a>
+				<a href="strategy.html">Strategy</a>
+				<a href="community.html">Community</a>
+				<a href="kredit.html">Kredit</a>
+			</div>
+		</footer>
 	</main>
 
 	<script src="strategy.js"></script>

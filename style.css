@@ -109,12 +109,12 @@ button {
 }
 
 .brand-logo--panel {
-	width: 320px;
+	width: 420px;
 	height: auto;
 }
 
 .brand-logo--dashboard {
-	height: 72px;
+	height: 100px;
 	width: auto;
 }
 
@@ -1634,3 +1634,572 @@ body.is-signup .auth-card__copy {
 		position: static;
 	}
 }
+
+/* ===== Kredit nav link icon ===== */
+.kredit-nav-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.kredit-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border-radius: 8px;
+	background: var(--accent);
+	color: #fff;
+	font-size: 0.72rem;
+	font-weight: 700;
+	line-height: 1;
+	flex-shrink: 0;
+}
+
+.page__links .kredit-nav-link.is-active .kredit-icon,
+.dashboard__links .kredit-nav-link.is-active .kredit-icon {
+	background: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Kredit page ===== */
+
+/* Hero */
+.kredit-hero {
+	display: grid;
+	gap: 16px;
+	max-width: 680px;
+	text-align: center;
+	justify-self: center;
+	padding: 20px 0 8px;
+}
+
+.kredit-hero__eyebrow {
+	color: var(--accent);
+}
+
+.kredit-hero__title {
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 800;
+	font-size: clamp(2.4rem, 5vw, 3.6rem);
+	line-height: 1.05;
+	letter-spacing: -0.03em;
+	background: linear-gradient(135deg, var(--accent), #5e8a6e);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	color: transparent;
+}
+
+.kredit-hero__subtitle {
+	margin: 0;
+	color: var(--muted);
+	line-height: 1.8;
+	font-size: 1.06rem;
+	max-width: 52ch;
+	justify-self: center;
+}
+
+/* Toggle */
+.kredit-toggle-wrap {
+	display: flex;
+	justify-content: center;
+}
+
+.kredit-toggle {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px;
+	padding: 6px;
+	border-radius: 999px;
+	background: rgba(124, 158, 138, 0.1);
+	width: min(100%, 320px);
+}
+
+.kredit-toggle__btn {
+	min-height: 48px;
+	border-radius: 999px;
+	font-weight: 600;
+	font-size: 1rem;
+	color: var(--muted);
+	transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.kredit-toggle__btn.is-active {
+	background: var(--accent);
+	color: #fff;
+	box-shadow: 0 12px 24px rgba(124, 158, 138, 0.3);
+}
+
+.kredit-toggle__btn:hover {
+	transform: translateY(-2px);
+}
+
+/* Panels */
+.kredit-panel--hidden {
+	display: none;
+}
+
+/* Request grid */
+.kredit-request-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+}
+
+/* Kredit card */
+.kredit-card {
+	padding: 26px;
+	border-radius: var(--radius-lg);
+	background: rgba(255, 255, 255, 0.92);
+	border: 1px solid rgba(46, 46, 46, 0.05);
+	box-shadow: 0 16px 32px rgba(46, 46, 46, 0.06);
+	display: grid;
+	gap: 16px;
+	transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.kredit-card:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-hover);
+}
+
+.kredit-card__top {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+.kredit-card__avatar {
+	width: 48px;
+	height: 48px;
+	border-radius: 999px;
+	display: grid;
+	place-items: center;
+	color: #fff;
+	font-weight: 700;
+	font-size: 0.9rem;
+	flex-shrink: 0;
+	box-shadow: 0 8px 16px rgba(46, 46, 46, 0.1);
+}
+
+.kredit-card__info {
+	display: grid;
+	gap: 2px;
+}
+
+.kredit-card__name {
+	margin: 0;
+	font-size: 1.05rem;
+}
+
+.kredit-card__purpose {
+	font-size: 0.84rem;
+	font-weight: 600;
+	color: var(--accent);
+}
+
+.kredit-card__desc {
+	margin: 0;
+	color: var(--muted);
+	line-height: 1.7;
+	font-size: 0.94rem;
+}
+
+.kredit-card__meta {
+	display: flex;
+	gap: 24px;
+}
+
+.kredit-card__amount,
+.kredit-card__timeline {
+	display: grid;
+	gap: 2px;
+}
+
+.kredit-card__amount-label {
+	font-size: 0.76rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.kredit-card__foot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding-top: 4px;
+	border-top: 1px solid rgba(46, 46, 46, 0.06);
+}
+
+.kredit-risk-badge {
+	padding: 6px 14px;
+	border-radius: 999px;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+}
+
+.kredit-lend-btn {
+	min-height: 42px;
+	padding: 0 28px;
+	font-size: 0.92rem;
+}
+
+.kredit-lend-btn--done {
+	background: rgba(124, 158, 138, 0.16);
+	color: var(--accent);
+	box-shadow: none;
+	cursor: default;
+}
+
+/* Borrow form */
+.kredit-borrow-card {
+	max-width: 600px;
+}
+
+.kredit-textarea {
+	width: 100%;
+	min-height: 90px;
+	padding: 16px 18px;
+	border-radius: var(--radius-md);
+	border: 1px solid rgba(46, 46, 46, 0.09);
+	background: rgba(255, 255, 255, 0.95);
+	color: var(--text);
+	outline: none;
+	font: inherit;
+	resize: vertical;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+	transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.kredit-textarea::placeholder {
+	color: rgba(46, 46, 46, 0.4);
+}
+
+.kredit-textarea:focus {
+	border-color: rgba(124, 158, 138, 0.5);
+	box-shadow: 0 0 0 4px rgba(124, 158, 138, 0.12);
+}
+
+/* My Kredit section */
+.kredit-my-section {
+	display: grid;
+	gap: 22px;
+}
+
+.kredit-stats-row {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.kredit-stat-card {
+	padding: 24px;
+	border-radius: var(--radius-lg);
+	background: rgba(255, 255, 255, 0.9);
+	box-shadow: 0 14px 28px rgba(46, 46, 46, 0.06);
+	border: 1px solid rgba(46, 46, 46, 0.05);
+	display: grid;
+	gap: 10px;
+}
+
+.kredit-stat-card p {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.92rem;
+}
+
+.kredit-stat-card strong {
+	font-size: 2rem;
+	line-height: 1;
+	color: var(--text);
+	letter-spacing: -0.02em;
+}
+
+.kredit-stat-card span {
+	color: var(--muted);
+	font-size: 0.88rem;
+}
+
+/* Loan rows */
+.kredit-loans-list {
+	display: grid;
+	gap: 16px;
+}
+
+.kredit-loan-row {
+	padding: 22px 24px;
+	border-radius: var(--radius-md);
+	background: linear-gradient(135deg, rgba(250, 250, 247, 0.96), rgba(255, 255, 255, 0.98));
+	border: 1px solid rgba(46, 46, 46, 0.05);
+	box-shadow: 0 10px 22px rgba(46, 46, 46, 0.05);
+	display: grid;
+	gap: 14px;
+}
+
+.kredit-loan-row__info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.kredit-loan-row__info strong {
+	font-size: 1.02rem;
+}
+
+.kredit-loan-row__info span {
+	color: var(--muted);
+	font-size: 0.88rem;
+}
+
+.kredit-loan-row__bar-wrap {
+	display: grid;
+	gap: 8px;
+}
+
+.kredit-loan-row__status {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.kredit-loan-status-badge {
+	padding: 4px 12px;
+	border-radius: 999px;
+	font-size: 0.78rem;
+	font-weight: 600;
+}
+
+.kredit-loan-status-badge--active {
+	background: rgba(124, 158, 138, 0.14);
+	color: var(--accent);
+}
+
+.kredit-loan-status-badge--done {
+	background: rgba(124, 158, 138, 0.22);
+	color: #5e8a6e;
+}
+
+.kredit-loan-pct {
+	font-weight: 700;
+	font-size: 0.88rem;
+	color: var(--text);
+}
+
+/* Kredit AI tip card override */
+.kredit-tip-card {
+	background: linear-gradient(135deg, rgba(124, 158, 138, 0.18), rgba(124, 158, 138, 0.08));
+	border-color: rgba(124, 158, 138, 0.25);
+}
+
+/* ===== Kredit responsive ===== */
+@media (max-width: 900px) {
+	.kredit-request-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.kredit-stats-row {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 560px) {
+	.kredit-hero__title {
+		font-size: 2rem;
+	}
+
+	.kredit-toggle {
+		width: 100%;
+	}
+
+	.kredit-card__meta {
+		flex-direction: column;
+		gap: 10px;
+	}
+}
+
+/* ===== Posts Per Week — Custom Slider ===== */
+.posts-per-week-field {
+	display: grid;
+	gap: 16px;
+}
+
+.ppw-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.ppw-label {
+	font-size: 0.88rem;
+	font-weight: 600;
+	color: var(--text);
+}
+
+.ppw-count {
+	font-size: 1.5rem;
+	font-weight: 800;
+	color: var(--accent);
+	line-height: 1;
+}
+
+.ppw-slider-wrap {
+	display: grid;
+	gap: 8px;
+}
+
+.ppw-slider {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 22px;
+	background: transparent;
+	outline: none;
+	cursor: pointer;
+}
+
+.ppw-slider::-webkit-slider-runnable-track {
+	height: 6px;
+	border-radius: 6px;
+	background: linear-gradient(to right, var(--accent) var(--fill, 50%), rgba(124, 158, 138, 0.15) var(--fill, 50%));
+}
+
+.ppw-slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: #fff;
+	border: 3px solid var(--accent);
+	box-shadow: 0 2px 8px rgba(124, 158, 138, 0.3);
+	cursor: pointer;
+	margin-top: -8px;
+	transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.ppw-slider::-webkit-slider-thumb:hover {
+	box-shadow: 0 4px 14px rgba(124, 158, 138, 0.4);
+	transform: scale(1.1);
+}
+
+.ppw-slider::-moz-range-thumb {
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: #fff;
+	border: 3px solid var(--accent);
+	box-shadow: 0 2px 8px rgba(124, 158, 138, 0.3);
+	cursor: pointer;
+}
+
+.ppw-slider::-moz-range-track {
+	height: 6px;
+	border-radius: 6px;
+	background: rgba(124, 158, 138, 0.15);
+}
+
+.ppw-slider::-moz-range-progress {
+	height: 6px;
+	border-radius: 6px;
+	background: var(--accent);
+}
+
+.ppw-slider-labels {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 2px;
+}
+
+.ppw-slider-labels span {
+	font-size: 0.72rem;
+	font-weight: 500;
+	color: var(--muted);
+	width: 16px;
+	text-align: center;
+}
+
+.ppw-pace {
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: var(--accent);
+	text-align: center;
+}
+
+/* ===== Consistent Footer ===== */
+.site-footer {
+	margin-top: 40px;
+	padding: 32px 26px;
+	border-top: 1px solid rgba(46, 46, 46, 0.06);
+	text-align: center;
+	display: grid;
+	gap: 12px;
+}
+
+.site-footer__brand {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.site-footer__brand img {
+	height: 36px;
+	width: auto;
+}
+
+.site-footer__text {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.86rem;
+	line-height: 1.7;
+}
+
+.site-footer__links {
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.site-footer__links a {
+	color: var(--muted);
+	font-size: 0.86rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: color 180ms ease;
+}
+
+.site-footer__links a:hover {
+	color: var(--accent);
+}
+
+/* ===== Smooth page transitions ===== */
+.page > section,
+.page > div {
+	animation: pageContentFade 400ms ease both;
+}
+
+@keyframes pageContentFade {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.page > section:nth-child(2) { animation-delay: 60ms; }
+.page > section:nth-child(3) { animation-delay: 120ms; }
+.page > section:nth-child(4) { animation-delay: 180ms; }
+.page > section:nth-child(5) { animation-delay: 240ms; }
+.page > div:nth-child(3) { animation-delay: 120ms; }
+.page > div:nth-child(4) { animation-delay: 180ms; }
